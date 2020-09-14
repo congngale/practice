@@ -35,7 +35,7 @@ CPPFLAGS += -isystem $(GTEST_DIR)/include -Isolutions
 CXXFLAGS += -std=c++11 -Wall
 
 # include library
-LDFLAGS =
+LDFLAGS = -lpthread
 
 # All Google Test headers.  Usually you shouldn't change this
 # definition.
