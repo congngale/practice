@@ -44,7 +44,7 @@ GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
 
 # House-keeping build targets.
 
-.PHONY: clean $(TEST)
+.PHONY: clean $(TEST) test
 
 all : $(TEST)
 
@@ -80,3 +80,6 @@ gtest_main.a : gtest-all.o gtest_main.o
 
 $(TEST) : $(OBJECTS) gtest_main.a 
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(OBJECTS) gtest_main.a -o $(TEST) $(LDFLAGS)
+
+test:
+	./$(TEST)
