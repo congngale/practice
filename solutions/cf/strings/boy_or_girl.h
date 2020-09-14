@@ -3,7 +3,7 @@
 
 #include <set>
 
-#include "base.h"
+#include "cf/base.h"
 
 #define IGNORE "IGNORE HIM!"
 #define CHAT "CHAT WITH HER!"

@@ -1,7 +1,7 @@
 #include <limits.h>
 #include "gtest/gtest.h"
 
-#include "cf/petya_and_strings.h"
+#include "cf/strings/petya_and_strings.h"
 
 using namespace std;
 

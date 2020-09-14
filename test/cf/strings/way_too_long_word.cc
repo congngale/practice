@@ -1,7 +1,7 @@
 #include <limits.h>
 #include "gtest/gtest.h"
 
-#include "cf/way_too_long_word.h"
+#include "cf/strings/way_too_long_word.h"
 
 using namespace std;
 

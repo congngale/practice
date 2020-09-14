@@ -3,7 +3,7 @@
 
 #include <set>
 
-#include "base.h"
+#include "cf/base.h"
 
 class HorseShoe : public Base {
   public:

@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include "base.h"
+#include "cf/base.h"
 
 class PerfectPermutation : public Base {
   public:

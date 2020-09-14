@@ -1,7 +1,7 @@
 #include <limits.h>
 #include "gtest/gtest.h"
 
-#include "cf/boy_or_girl.h"
+#include "cf/strings/boy_or_girl.h"
 
 using namespace std;
 
