@@ -3,9 +3,6 @@
 
 #include "base.h"
 
-#define WM_CONTEST "4"
-#define WM_PROBLEM "A"
-
 class WaterMelon : public Base {
   public:
     WaterMelon() {
