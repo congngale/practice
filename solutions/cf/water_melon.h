@@ -3,6 +3,9 @@
 
 #include "base.h"
 
+#define NO "NO"
+#define YES "YES"
+
 class WaterMelon : public Base {
   public:
     WaterMelon() {

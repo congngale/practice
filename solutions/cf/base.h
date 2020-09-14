@@ -3,9 +3,6 @@
 
 #include <string>
 
-#define NO "NO"
-#define YES "YES"
-
 class Base {
   public:
     Base(){};
