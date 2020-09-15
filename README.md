@@ -8,6 +8,5 @@
 
 # Setup Requirements
 - Clang or GCC with support C++11 or greater.
-- Makefile is used to build and test solutions.
-- The solutions ars developed and tested on Mac OS and Ubuntu.
+- The Makefile is developed and tested on Mac OS and Ubuntu.
 - Using Google Test and an custom input/output function for testing and verifying.
