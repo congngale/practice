@@ -2,7 +2,7 @@
 CXX_FLAGS = -std=c++11 -Wall -Werror
 
 # make all problems
-all:: boy_or_girl petya_and_strings way_too_long_word bit_plus_plus \
+all: boy_or_girl petya_and_strings way_too_long_word bit_plus_plus \
 	domino_piling horse_shoe next_round team water_melon perfect_permutation
 
 # team
