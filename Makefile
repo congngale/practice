@@ -20,11 +20,26 @@ GTEST_DIR = lib/googletest/googletest
 # created to the list.
 TEST = practice_unittest
 
-# test source files
-SOURCES = $(shell find tests -type f -name '*.cc')
+# source misc
+MISC_SOURCES = $(shell find tests/misc -type f -name '*.cc')
+
+# source div A
+DIV_A_SOURCES = $(shell find tests/code_forces/a -type f -name '*.cc')
+
+# source div B
+DIV_B_SOURCES = $(shell find tests/code_forces/b -type f -name '*.cc')
+
+# div A object files
+DIV_A_OBJECTS = $(patsubst %.cc,%.o,$(DIV_A_SOURCES))
+
+# div B object files
+DIV_B_OBJECTS = $(patsubst %.cc,%.o,$(DIV_B_SOURCES))
+
+# misc object files
+MISC_OBJECTS = $(patsubst %.cc,%.o,$(MISC_SOURCES))
 
 # object files
-OBJECTS = $(patsubst %.cc,%.o,$(SOURCES))
+OBJECTS = $(DIV_A_OBJECTS) $(DIV_B_OBJECTS) $(MISC_OBJECTS)
 
 # Flags passed to the preprocessor.
 # Set Google Test's header directory as a system directory, such that
@@ -44,9 +59,13 @@ GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
 
 # House-keeping build targets.
 
-.PHONY: clean $(TEST) test
+.PHONY: clean code_forces div_a div_b $(TEST) test_div_a test_div_a test
 
-all : code_forces $(TEST)
+all : source_div_a source_div_b $(TEST)
+
+div_a: source_div_a test_div_a
+
+div_b: source_div_b test_div_b
 
 clean :
 	rm -f $(OBJECTS)
@@ -79,11 +98,20 @@ gtest_main.a : gtest-all.o gtest_main.o
 # gtest_main.a, depending on whether it defines its own main()
 # function.
 
-code_forces:
-	$(MAKE) -C solutions/code_forces
+source_div_a:
+	$(MAKE) -C solutions/code_forces/a
+
+source_div_b:
+	$(MAKE) -C solutions/code_forces/b
 
 $(TEST) : $(OBJECTS) gtest_main.a 
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(OBJECTS) gtest_main.a -o $(TEST) $(LDFLAGS)
+
+test_div_a : $(DIV_A_OBJECTS) gtest_main.a
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(DIV_A_OBJECTS) gtest_main.a -o $(TEST) $(LDFLAGS)
+
+test_div_b : $(DIV_B_OBJECTS) gtest_main.a
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(DIV_B_OBJECTS) gtest_main.a -o $(TEST) $(LDFLAGS)
 
 test:
 	./$(TEST)

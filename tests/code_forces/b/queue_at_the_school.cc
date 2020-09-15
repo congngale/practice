@@ -25,5 +25,6 @@ namespace {
     EXPECT_EQ(execute("4 1\nGGGB"), "GGGB");
     EXPECT_EQ(execute("5 1\nBGGBG"), "GBGGB");
     EXPECT_EQ(execute("5 2\nBGGBG"), "GGBGB");
+    EXPECT_EQ(execute("22 7\nGBGGBGGGGGBBBGGBGBGBBB"), "GGGGGGGGBGGBGGBBBBBBBB");
   }
 }
