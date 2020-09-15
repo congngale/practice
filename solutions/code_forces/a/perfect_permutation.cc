@@ -11,7 +11,7 @@ using namespace std;
 */
 int main() {
   //init
-  int input;
+  size_t input;
   vector<int> ret;
 
   //read input
