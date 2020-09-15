@@ -11,7 +11,7 @@ using namespace std;
 */
 int main() {
   //init
-  int i = 0;
+  size_t i = 0;
   int ret = 0;
   std::string a,b;
 
