@@ -19,10 +19,13 @@ namespace {
       }
   };
 
-  //code force test cases
-  TEST_F(HorseShoeTest, CodeForceTest) {
+  TEST_F(HorseShoeTest, Test1) {
     //test cases
     EXPECT_EQ(execute("1 7 3 3"), "1");
+  }
+
+  TEST_F(HorseShoeTest, Test2) {
+    //test cases
     EXPECT_EQ(execute("7 7 7 7"), "3");
   }
 }

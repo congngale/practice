@@ -19,11 +19,18 @@ namespace {
       }
   };
 
-  //code force test cases
-  TEST_F(PetyaAndStringsTest, CodeForceTest) {
+  TEST_F(PetyaAndStringsTest, Test1) {
     //test cases
     EXPECT_EQ(execute("abs\nAbz"), "-1");
+  }
+
+  TEST_F(PetyaAndStringsTest, Test2) {
+    //test cases
     EXPECT_EQ(execute("aaaa\naaaA"), "0");
+  }
+
+  TEST_F(PetyaAndStringsTest, Test3) {
+    //test cases
     EXPECT_EQ(execute("abcdefg\nAbCdEfF"), "1");
   }
 }

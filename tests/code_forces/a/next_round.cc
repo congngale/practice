@@ -19,10 +19,13 @@ namespace {
       }
   };
 
-  //code force test cases
-  TEST_F(NextRoundTest, CodeForceTest) {
+  TEST_F(NextRoundTest, Test1) {
     //test cases
-    EXPECT_EQ(execute("4 2\n0 0 0 0"), "0");
+    EXPECT_EQ(execute("8 5\n10 9 8 7 7 7 5 5"), "6");
+  }
+
+  TEST_F(NextRoundTest, Test2) {
+    //test cases
     EXPECT_EQ(execute("8 5\n10 9 8 7 7 7 5 5"), "6");
   }
 }

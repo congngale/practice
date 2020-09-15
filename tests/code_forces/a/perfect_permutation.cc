@@ -19,11 +19,18 @@ namespace {
       }
   };
 
-  //code force test cases
-  TEST_F(PerfectPermutationTest, CodeForceTest) {
+  TEST_F(PerfectPermutationTest, Test1) {
     //test cases
     EXPECT_EQ(execute("1"), "-1");
+  }
+
+  TEST_F(PerfectPermutationTest, Test2) {
+    //test cases
     EXPECT_EQ(execute("2"), "2 1");
+  }
+
+  TEST_F(PerfectPermutationTest, Test3) {
+    //test cases
     EXPECT_EQ(execute("4"), "2 1 4 3");
   }
 }

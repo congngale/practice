@@ -19,43 +19,43 @@ namespace {
       }
   };
 
-  //custom test
-  TEST_F(WaterMelonTest, CustomTest) {
+  TEST_F(WaterMelonTest, Test1) {
     //test fail
     EXPECT_EQ(execute("0"), NO);
-    EXPECT_EQ(execute("1"), NO);
-    EXPECT_EQ(execute("2"), NO);
-    EXPECT_EQ(execute("3"), NO);
-
-    //test success
-    EXPECT_EQ(execute("4"), YES);
-    EXPECT_EQ(execute("6"), YES);
-    EXPECT_EQ(execute("50"), YES);
-    EXPECT_EQ(execute("60"), YES);
   }
 
-  //code force test cases
-  TEST_F(WaterMelonTest, CodeForceTest) {
-    //test success
-    EXPECT_EQ(execute("8"), YES);
-    EXPECT_EQ(execute("5"), NO);
-    EXPECT_EQ(execute("4"), YES);
-    EXPECT_EQ(execute("3"), NO);
-    EXPECT_EQ(execute("2"), NO);
+  TEST_F(WaterMelonTest, Test2) {
+    //test fail
     EXPECT_EQ(execute("1"), NO);
-    EXPECT_EQ(execute("7"), NO);
+  }
+
+  TEST_F(WaterMelonTest, Test3) {
+    //test fail
+    EXPECT_EQ(execute("2"), NO);
+  }
+
+  TEST_F(WaterMelonTest, Test4) {
+    //test fail
+    EXPECT_EQ(execute("3"), NO);
+  }
+
+  TEST_F(WaterMelonTest, Test5) {
+    //test success
+    EXPECT_EQ(execute("4"), YES);
+  }
+
+  TEST_F(WaterMelonTest, Test6) {
+    //test success
     EXPECT_EQ(execute("6"), YES);
-    EXPECT_EQ(execute("10"), YES);
-    EXPECT_EQ(execute("9"), NO);
-    EXPECT_EQ(execute("53"), NO);
-    EXPECT_EQ(execute("77"), NO);
-    EXPECT_EQ(execute("32"), YES);
-    EXPECT_EQ(execute("44"), YES);
-    EXPECT_EQ(execute("98"), YES);
-    EXPECT_EQ(execute("99"), NO);
-    EXPECT_EQ(execute("90"), YES);
-    EXPECT_EQ(execute("67"), NO);
-    EXPECT_EQ(execute("100"), YES);
-    EXPECT_EQ(execute("88"), YES);
+  }
+
+  TEST_F(WaterMelonTest, Test7) {
+    //test success
+    EXPECT_EQ(execute("50"), YES);
+  }
+
+  TEST_F(WaterMelonTest, Test8) {
+    //test success
+    EXPECT_EQ(execute("60"), YES);
   }
 }

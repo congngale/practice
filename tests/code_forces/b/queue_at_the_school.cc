@@ -19,12 +19,23 @@ namespace {
       }
   };
 
-  //code force test cases
-  TEST_F(QueueAtTheSchoolTest, CodeForceTest) {
+  TEST_F(QueueAtTheSchoolTest, Test1) {
     //test cases
     EXPECT_EQ(execute("4 1\nGGGB"), "GGGB");
+  }
+
+  TEST_F(QueueAtTheSchoolTest, Test2) {
+    //test cases
     EXPECT_EQ(execute("5 1\nBGGBG"), "GBGGB");
+  }
+
+  TEST_F(QueueAtTheSchoolTest, Test3) {
+    //test cases
     EXPECT_EQ(execute("5 2\nBGGBG"), "GGBGB");
+  }
+
+  TEST_F(QueueAtTheSchoolTest, Test4) {
+    //test cases
     EXPECT_EQ(execute("22 7\nGBGGBGGGGGBBBGGBGBGBBB"), "GGGGGGGGBGGBGGBBBBBBBB");
   }
 }

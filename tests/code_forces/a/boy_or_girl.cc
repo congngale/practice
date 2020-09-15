@@ -19,11 +19,18 @@ namespace {
       }
   };
 
-  //code force test cases
-  TEST_F(BoyOrGirlTest, CodeForceTest) {
+  TEST_F(BoyOrGirlTest, Test1) {
     //test cases
     EXPECT_EQ(execute("wjmzbmr"), CHAT);
+  }
+
+  TEST_F(BoyOrGirlTest, Test2) {
+    //test cases
     EXPECT_EQ(execute("xiaodao"), IGNORE);
+  }
+
+  TEST_F(BoyOrGirlTest, Test3) {
+    //test cases
     EXPECT_EQ(execute("sevenkplus"), CHAT);
   }
 }

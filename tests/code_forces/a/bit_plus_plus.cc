@@ -19,10 +19,13 @@ namespace {
       }
   };
 
-  //code force test cases
-  TEST_F(BitPlusPlusTest, CodeForceTest) {
+  TEST_F(BitPlusPlusTest, Test1) {
     //test cases
     EXPECT_EQ(execute({"1\n++X"}), "1");
+  }
+
+  TEST_F(BitPlusPlusTest, Test2) {
+    //test cases
     EXPECT_EQ(execute({"2\n++X\nX--"}), "0");
   }
 }

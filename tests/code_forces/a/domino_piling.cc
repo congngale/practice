@@ -19,10 +19,13 @@ namespace {
       }
   };
 
-  //code force test cases
-  TEST_F(DoninoPilingTest, CodeForceTest) {
+  TEST_F(DoninoPilingTest, Test1) {
     //test cases
     EXPECT_EQ(execute("2 4"), "4");
+  }
+
+  TEST_F(DoninoPilingTest, Test2) {
+    //test cases
     EXPECT_EQ(execute("3 3"), "4");
   }
 }

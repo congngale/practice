@@ -20,7 +20,7 @@ namespace {
   };
 
   //custom test
-  TEST_F(WayTooLongWordTest, CustomTest) {
+  TEST_F(WayTooLongWordTest, Test1) {
     //init data
     string output = "word\nl10n\ni18n\np43s";
     string input = "4\nword\nlocalization\ninternationalization\n"
@@ -32,7 +32,7 @@ namespace {
 
 
   //code force test cases
-  TEST_F(WayTooLongWordTest, CodeForceTest) {
+  TEST_F(WayTooLongWordTest, Test2) {
     //init data
     string output = "abcdefgh\nabcdefghi\nabcdefghij\na9k\na11m";
     string input = "5\nabcdefgh\nabcdefghi\nabcdefghij\nabcdefghijk\n"
