@@ -44,7 +44,7 @@ OBJECTS = $(DIV_A_OBJECTS) $(DIV_B_OBJECTS) $(MISC_OBJECTS)
 # Flags passed to the preprocessor.
 # Set Google Test's header directory as a system directory, such that
 # the compiler doesn't generate warnings in Google Test headers.
-CPPFLAGS += -isystem $(GTEST_DIR)/include -Isolutions -Iutils
+CPPFLAGS += -isystem $(GTEST_DIR)/include -Iutils
 
 # Flags passed to the C++ compiler.
 CXXFLAGS += -std=c++11 -Wall
@@ -59,18 +59,22 @@ GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
 
 # House-keeping build targets.
 
-.PHONY: clean code_forces div_a div_b $(TEST) test_div_a test_div_a test
+.PHONY: clean code_forces div_a div_b problem_div_a problem_div_b problem_misc \
+	$(TEST) test_misc test_div_a test_div_b test
 
-all : source_div_a source_div_b $(TEST)
+all : problem_div_a problem_div_b problem_misc $(TEST)
 
-div_a: source_div_a test_div_a
+misc: problem_misc test_misc
 
-div_b: source_div_b test_div_b
+div_a: problem_div_a test_div_a
+
+div_b: problem_div_b test_div_b
 
 clean :
 	rm -f $(OBJECTS)
 	rm -f $(TEST) *.o *.a
-	$(MAKE) clean -C solutions/code_forces
+	$(MAKE) clean -C src/misc
+	$(MAKE) clean -C src/code_forces
 
 # Builds gtest.a and gtest_main.a.
 
@@ -98,14 +102,20 @@ gtest_main.a : gtest-all.o gtest_main.o
 # gtest_main.a, depending on whether it defines its own main()
 # function.
 
-source_div_a:
-	$(MAKE) -C solutions/code_forces/a
+problem_misc:
+	$(MAKE) -C src/misc
 
-source_div_b:
-	$(MAKE) -C solutions/code_forces/b
+problem_div_a:
+	$(MAKE) -C src/code_forces/a
+
+problem_div_b:
+	$(MAKE) -C src/code_forces/b
 
 $(TEST) : $(OBJECTS) gtest_main.a 
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(OBJECTS) gtest_main.a -o $(TEST) $(LDFLAGS)
+
+test_misc : $(MISC_OBJECTS) gtest_main.a
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(MISC_OBJECTS) gtest_main.a -o $(TEST) $(LDFLAGS)
 
 test_div_a : $(DIV_A_OBJECTS) gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(DIV_A_OBJECTS) gtest_main.a -o $(TEST) $(LDFLAGS)
