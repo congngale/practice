@@ -28,7 +28,7 @@ int main() {
   if (ret.empty() || ret.size() < input) ret = {-1};
 
   //prin output
-  for (int i = 0; i < ret.size(); i++) {
+  for (size_t i = 0; i < ret.size(); i++) {
     cout << ret[i];
 
     if (i < ret.size() - 1){
