@@ -21,7 +21,7 @@ GTEST_DIR = lib/googletest/googletest
 TEST = practice_unittest
 
 # test source files
-SOURCES = $(shell find test -type f -name '*.cc')
+SOURCES = $(shell find tests -type f -name '*.cc')
 
 # object files
 OBJECTS = $(patsubst %.cc,%.o,$(SOURCES))
@@ -29,7 +29,7 @@ OBJECTS = $(patsubst %.cc,%.o,$(SOURCES))
 # Flags passed to the preprocessor.
 # Set Google Test's header directory as a system directory, such that
 # the compiler doesn't generate warnings in Google Test headers.
-CPPFLAGS += -isystem $(GTEST_DIR)/include -Isolutions
+CPPFLAGS += -isystem $(GTEST_DIR)/include -Isolutions -Iutils
 
 # Flags passed to the C++ compiler.
 CXXFLAGS += -std=c++11 -Wall
@@ -46,11 +46,12 @@ GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
 
 .PHONY: clean $(TEST) test
 
-all : $(TEST)
+all : code_forces $(TEST)
 
 clean :
 	rm -f $(OBJECTS)
 	rm -f $(TEST) *.o *.a
+	$(MAKE) clean -C solutions/code_forces
 
 # Builds gtest.a and gtest_main.a.
 
@@ -77,6 +78,9 @@ gtest_main.a : gtest-all.o gtest_main.o
 # Builds a sample test.  A test should link with either gtest.a or
 # gtest_main.a, depending on whether it defines its own main()
 # function.
+
+code_forces:
+	$(MAKE) -C solutions/code_forces
 
 $(TEST) : $(OBJECTS) gtest_main.a 
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(OBJECTS) gtest_main.a -o $(TEST) $(LDFLAGS)
