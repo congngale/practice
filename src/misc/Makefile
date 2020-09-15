@@ -5,7 +5,7 @@ CXX_FLAGS = -std=c++11 -Wall -Werror
 SOURCES = $(shell find ./ -type f -name '*.cc')
 
 # execute files
-EXECUTES = $(patsubst .//%.cc,%,$(SOURCES))
+EXECUTES = $(patsubst %.cc,%,$(SOURCES))
 
 .PHONY: all
 
