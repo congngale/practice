@@ -1,12 +1,18 @@
 # build flags
 CXX_FLAGS = -std=c++11 -Wall -Werror
 
-# make all problems
-all: queue_at_the_school
+# source files
+SOURCES = $(shell find ./ -type f -name '*.cc')
 
-# queue at the school
-queue_at_the_school:
-	$(CXX) $(CXX_FLAGS) queue_at_the_school.cc -o queue_at_the_school
+# execute files
+EXECUTES = $(patsubst .//%.cc,%,$(SOURCES))
+
+.PHONY: all
+
+all: $(EXECUTES)
+
+$(EXECUTES):
+	$(CXX) $(CXX_FLAGS) $@.cc -o $@
 
 clean:
-	@- $(RM) queue_at_the_school
+	@- $(RM) $(EXECUTES)

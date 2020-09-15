@@ -1,12 +1,18 @@
 # build flags
 CXX_FLAGS = -std=c++11 -Wall -Werror
 
-# make all problems
-all: seven_number
+# source files
+SOURCES = $(shell find ./ -type f -name '*.cc')
 
-# seven number
-seven_number:
-	$(CXX) $(CXX_FLAGS) seven_number.cc -o seven_number
+# execute files
+EXECUTES = $(patsubst .//%.cc,%,$(SOURCES))
+
+.PHONY: all
+
+all: $(EXECUTES)
+
+$(EXECUTES):
+	$(CXX) $(CXX_FLAGS) $@.cc -o $@
 
 clean:
-	@- $(RM) seven_number
+	@- $(RM) $(EXECUTES)

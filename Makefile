@@ -18,7 +18,7 @@ GTEST_DIR = lib/googletest/googletest
 
 # All tests produced by this Makefile.  Remember to add new tests you
 # created to the list.
-TEST = practice_unittest
+TEST = practice
 
 # source misc
 MISC_SOURCES = $(shell find tests/misc -type f -name '*.cc')
