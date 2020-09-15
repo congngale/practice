@@ -18,7 +18,7 @@ int main() {
   cin >> input;
 
   //build permutation
-  for (int i = 1; i < input; i += 2) {
+  for (size_t i = 1; i < input; i += 2) {
     //append 1
     ret.push_back(i + 1);
     ret.push_back(i);
