@@ -15,7 +15,7 @@ class System {
       write_test(test_case);
 
       //build command
-      std::string command = "./" + execute_file + " < " + TEST_FILE;
+      std::string command = "./" + execute_file + ".bin < " + TEST_FILE;
 
       //execute test
       std::string ret = read_command_output(command.c_str());
