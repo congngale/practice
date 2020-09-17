@@ -8,6 +8,6 @@
 #define CHAT "CHAT WITH HER!"
 
 //package path
-#define PACKAGE_PATH "src/code_forces/a/"
+#define PACKAGE_PATH "../../../srcs/code_forces/a/"
 
 #endif //A_DEFINE_H
