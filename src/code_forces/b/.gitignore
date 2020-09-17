@@ -1,2 +1,3 @@
 # execute files
-queue_at_the_school 
+*
+!*.cc

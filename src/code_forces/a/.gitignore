@@ -1,11 +1,3 @@
 # execute files
-team 
-horse_shoe 
-next_round 
-boy_or_girl
-water_melon 
-bit_plus_plus
-domino_piling 
-petya_and_strings 
-way_too_long_word 
-perfect_permutation
+*
+!*.cc
