@@ -1,5 +1,5 @@
 # app name
-TEST = round_670.bin
+TEST = round_670_div2.bin
 
 # gtest dir
 GTEST_DIR = ../../../lib/googletest/googletest
