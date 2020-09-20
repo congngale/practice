@@ -25,17 +25,14 @@ int main() {
   for (int i = 0; i < t; i++) {
     cin >> n;  
     cin >> input;
-    int index = 0;
     bool raze_odd = false;
     bool breach_even = false;
 
-    while (index < input.size()) {
-      raze_odd |= (input[index] - '0') % 2 > 0;
-      index++;
-
-      if (index < input.size()) {
-        breach_even |= (input[index] - '0') % 2 == 0;
-        index++;
+    for (int j = 0; j < n; j++) {
+      if (j % 2 == 0) {
+        raze_odd |= (input[j] - '0') % 2 > 0;
+      } else {
+        breach_even |= (input[j] - '0') % 2 == 0;
       }
     }
 
