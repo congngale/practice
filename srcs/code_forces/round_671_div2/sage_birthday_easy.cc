@@ -6,10 +6,10 @@
 using namespace std;
  
 /*
- * code: 1419D
+ * code: 1419D1
  * name: Sage's Birthday (easy version)
  * tags: binary search, greedy, implementation, sortings
- * url: https://codeforces.com/contest/1419/problem/D
+ * url: https://codeforces.com/contest/1419/problem/D1
 */
 int main() {
   //init
