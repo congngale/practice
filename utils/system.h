@@ -83,6 +83,21 @@ class System {
         }
       }
 
+      //trim ouput
+      if (!ret.empty()) {
+        //get first
+        size_t first = ret.find_first_not_of(' ');
+
+        //check first
+        if (first != std::string::npos) {
+          //get last
+          size_t last = ret.find_last_not_of(' ');
+
+          //get result
+          ret = ret.substr(first, (last - first + 1));
+        }
+      }
+
       return ret;
     }
 };

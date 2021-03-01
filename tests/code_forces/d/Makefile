@@ -1,5 +1,5 @@
 # app name
-TEST = round_670_div2.bin
+TEST = d.bin
 
 # gtest dir
 GTEST_DIR = ../../../lib/googletest/googletest
@@ -47,7 +47,7 @@ gtest.a : gtest-all.o
 gtest_main.a : gtest-all.o gtest_main.o
 	$(AR) $(ARFLAGS) $@ $^
 
-$(TEST): $(TEST_OBJECTS) gtest_main.a 
+$(TEST): $(TEST_OBJECTS) gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(TEST_OBJECTS) gtest_main.a -o $(TEST) $(LDFLAGS)
 
 clean :
