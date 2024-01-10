@@ -1,104 +1,73 @@
 #ifndef SYSTEM_H
 #define SYSTEM_H
 
-#include <string>
 #include <fstream>
 #include <iostream>
+#include <string>
 
-#define BUFFER_SIZE 512
-#define TEST_FILE "input.txt"
+// define constants
+constexpr auto kInputTest = "./input.txt";
+constexpr auto kOutputTest = "./output.txt";
 
 class System {
-  public:
-    static std::string execute_test(std::string execute_file, std::string test_case) {
-      //write test case
-      write_test(test_case);
+public:
+  static inline void
+  assert(const std::string &name, const std::string &input,
+         const std::string &expect,
+         const std::string &test = std::string(__BASE_FILE__)) {
 
-      //build command
-      std::string command = "./" + execute_file + ".bin < " + TEST_FILE;
+    // execute test
+    auto output = execute_test(name, input);
 
-      //execute test
-      std::string ret = read_command_output(command.c_str());
-
-      //clean up
-      clean_up();
-
-      return ret;
+    // check output
+    if (output.compare(0, expect.size(), expect) == 0) {
+      std::cout << test << " result: \033[1;32mPASS\033[0m" << std::endl;
+    } else {
+      output.pop_back();
+      std::cout << test << " result: \033[1;31mFAIL\033[0m" << std::endl;
     }
+  }
 
-  private:
-    //write test data
-    static void write_test(std::string input) {
-      //open file
-      std::ofstream file(TEST_FILE);
+private:
+  static std::string execute_test(const std::string &execute_file,
+                                  const std::string &test_case) {
+    // init output
+    std::string test_output;
 
-      //check file is open
-      if (file.is_open()) {
-        //write data
-        file << input;
+    // open input
+    std::ofstream input(kInputTest);
 
-        //close file
-        file.close();
-      }
-    }
+    if (input.is_open()) {
+      // write input test
+      input << test_case;
+      input.close();
 
-    //clean up
-    static void clean_up(void) {
-      //remove test file
-      std::remove(TEST_FILE);
-    }
+      // build command
+      auto test_command =
+          "./" + execute_file + " < " + kInputTest + " > " + kOutputTest;
 
-    static std::string read_command_output(std::string command) {
-      //init
-      FILE *fp;
-      std::string ret;      
+      // execute test
+      auto ret = system(test_command.c_str());
 
-      //create compess file
-      fp = popen(command.c_str(), "r");
+      if (ret == 0) {
+        // open output
+        std::ifstream output(kOutputTest);
 
-      //check
-      if (fp) {
-        //init buffer
-        char buffer[BUFFER_SIZE] = {0};
-
-        //read buffer
-        size_t len = fread(buffer, 1, sizeof(buffer), fp);
-
-        //read buffer
-        while (len > 1) {
-          //get buffer
-          ret += std::string(buffer, len - 1);
-
-          //check len, end of output
-          if (len < BUFFER_SIZE) {
-            //reset
-            len = 0;
-
-            //close file
-            pclose(fp);
-          } else {
-            //continue read
-            len = fread(buffer, 1, sizeof(buffer), fp);
-          }
+        // read output
+        if (output.is_open()) {
+          // read all data
+          test_output = std::string(std::istreambuf_iterator<char>(output),
+                                    std::istreambuf_iterator<char>());
+          output.close();
         }
       }
-
-      //trim ouput
-      if (!ret.empty()) {
-        //get first
-        size_t first = ret.find_first_not_of(' ');
-
-        //check first
-        if (first != std::string::npos) {
-          //get last
-          size_t last = ret.find_last_not_of(' ');
-
-          //get result
-          ret = ret.substr(first, (last - first + 1));
-        }
-      }
-
-      return ret;
     }
+
+    // clean up
+    std::remove(kInputTest);
+    std::remove(kOutputTest);
+
+    return test_output;
+  }
 };
-#endif //SYSTEM_H
+#endif // SYSTEM_H

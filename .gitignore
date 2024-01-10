@@ -1,5 +1,2 @@
-#ignore build files
-*.a
-*.o
-*.bin
-*.txt
+#ignore build
+build
