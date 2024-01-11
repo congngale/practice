@@ -12,40 +12,38 @@
  * url: https://codeforces.com/contest/1529/problem/B
  */
 
-int solve(std::vector<long long> &input) {
-  std::vector<long long> positive;
-  std::vector<long long> negative;
+int solve(std::vector<int> &input) {
+  const int inf = 1e9 + 10;
+  int max = inf;
+  std::vector<int> negative;
 
   // build 2 std::vectors
   for (auto &n : input) {
     if (n > 0) {
-      positive.push_back(n);
+      max = std::min(max, n);
     } else {
       negative.push_back(n);
     }
   }
 
-  // sort
-  sort(positive.begin(), positive.end());
-
   // get count
   int count = negative.size();
 
-  if (!positive.empty()) {
+  if (max != inf) {
     bool select = true;
-    auto max = positive.front();
 
     if (!negative.empty()) {
-      for (int i = 0; i < (negative.size() - 1) && select; i++) {
-        for (int j = i + 1; j < negative.size() && select; j++) {
-          // check select
-          select = abs(negative[i] - negative[j]) >= max;
-        }
+      // sort
+      sort(negative.begin(), negative.end());
+
+      for (int i = 1; i < negative.size() && select; i++) {
+        select = (abs(negative[i] - negative[i - 1]) >= max);
       }
     }
 
-    if (select)
+    if (select) {
       count++;
+    }
   }
 
   return count;
@@ -63,7 +61,7 @@ int main() {
 
     std::cin >> a;
 
-    std::vector<long long> input(a);
+    std::vector<int> input(a);
 
     for (int i = 0; i < a; i++) {
       std::cin >> input[i];

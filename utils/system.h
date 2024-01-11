@@ -14,7 +14,7 @@ class System {
 public:
   static inline void
   assert(const std::string &name, const std::string &input,
-         const std::string &expect,
+         const std::string &expect, bool print = false,
          const std::string &test = std::string(__BASE_FILE__)) {
     // get start time
     auto start = std::chrono::steady_clock::now();
@@ -24,6 +24,11 @@ public:
 
     // clean up expect
     auto expect_data = clean_string(expect);
+
+    if (print) {
+      std::cout << test << ": expect = " << expect_data
+                << ", output = " << output << std::endl;
+    }
 
     // get duration
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(
