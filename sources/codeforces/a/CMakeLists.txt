@@ -1,4 +1,5 @@
 # solutions
+add_executable(2023 ${CMAKE_CURRENT_SOURCE_DIR}/2023.cc)
 add_executable(team ${CMAKE_CURRENT_SOURCE_DIR}/team.cc)
 add_executable(abc-string ${CMAKE_CURRENT_SOURCE_DIR}/abc_string.cc)
 add_executable(horse-shoe ${CMAKE_CURRENT_SOURCE_DIR}/horse_shoe.cc)

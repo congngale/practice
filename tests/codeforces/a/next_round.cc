@@ -1,8 +1,9 @@
 #include "system.h"
 
-int main() {
+int main(int argc, char *argv[]) {
   // init execute
-  const std::string execute_file{"sources/codeforces/a/next-round"};
+  const std::string execute_file = std::string(argv[1]) +
+                                   "/build/sources/codeforces/a/next-round";
 
   // assert test
   System::assert(execute_file, "8 5\n10 9 8 7 7 7 5 5", "6");

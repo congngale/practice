@@ -11,7 +11,7 @@ constexpr auto kInputTest = "./input.txt";
 constexpr auto kOutputTest = "./output.txt";
 
 class System {
-public:
+ public:
   static inline void
   assert(const std::string &name, const std::string &input,
          const std::string &expect, bool print = false,
@@ -60,7 +60,7 @@ public:
 
       // build command
       auto test_command =
-          "./" + execute_file + " < " + kInputTest + " > " + kOutputTest;
+          execute_file + " < " + kInputTest + " > " + kOutputTest;
 
       // execute test
       auto ret = system(test_command.c_str());
@@ -98,4 +98,4 @@ public:
     return ret;
   }
 };
-#endif // SYSTEM_H
+#endif  // SYSTEM_H

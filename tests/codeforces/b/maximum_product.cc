@@ -1,8 +1,9 @@
 #include "system.h"
 
-int main() {
+int main(int argc, char *argv[]) {
   // init execute
-  const std::string execute_file{"sources/codeforces/b/maximum-product"};
+  const std::string execute_file = std::string(argv[1]) +
+                                   "/build/sources/codeforces/b/maximum-product";
 
   // assert test
   System::assert(execute_file,
