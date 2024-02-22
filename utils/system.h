@@ -45,8 +45,12 @@ class System {
       ofile.close();
     }
 
-    // execute test
-    assert(name, input, expect, print, test);
+    if (!input.empty() && !expect.empty()) {
+      // execute test
+      assert(name, input, expect, print, test);
+    } else {
+      std::cout << test << ": \033[1;31mFAIL TO EXECUTE\033[0m" << std::endl;
+    }
   }
 
   static inline void
