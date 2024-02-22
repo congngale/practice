@@ -13,6 +13,43 @@ constexpr auto kOutputTest = "./output.txt";
 class System {
  public:
   static inline void
+  assert_file(const std::string &name, const std::string &input_file,
+              const std::string &output_file, bool print = false,
+              const std::string &test = std::string(__BASE_FILE__)) {
+    // init data
+    std::string input;
+    std::string expect;
+
+    if (print) {
+      std::cout << test << ": input file = " << input_file << std::endl;
+      std::cout << test << ": output file = " << output_file << std::endl;
+    }
+
+    // open input
+    std::ifstream ifile(input_file);
+
+    if (ifile.is_open()) {
+      // read all data
+      input = std::string(std::istreambuf_iterator<char>(ifile),
+                          std::istreambuf_iterator<char>());
+      ifile.close();
+    }
+
+    // open output
+    std::ifstream ofile(output_file);
+
+    if (ofile.is_open()) {
+      // read all data
+      expect = std::string(std::istreambuf_iterator<char>(ofile),
+                           std::istreambuf_iterator<char>());
+      ofile.close();
+    }
+
+    // execute test
+    assert(name, input, expect, print, test);
+  }
+
+  static inline void
   assert(const std::string &name, const std::string &input,
          const std::string &expect, bool print = false,
          const std::string &test = std::string(__BASE_FILE__)) {
