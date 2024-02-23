@@ -1,8 +1,10 @@
 # get contest
 execute_process (
-  COMMAND basename -z ${CMAKE_CURRENT_SOURCE_DIR}
-  OUTPUT_VARIABLE CONTEST
+  COMMAND basename ${CMAKE_CURRENT_SOURCE_DIR}
+  OUTPUT_VARIABLE DIR_NAME
 )
+
+string(REPLACE "\n" "" CONTEST ${DIR_NAME})
 
 # collect source files
 file(GLOB FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.cc)
