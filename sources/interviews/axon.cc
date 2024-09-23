@@ -9,7 +9,7 @@ int main() {
   // read number
   std::cin >> number;
 
-  std::string binary = bitset<32>(number).to_string(); // to binary
+  std::string binary = std::bitset<32>(number).to_string();  // to binary
 
   int i;
   std::string reverse;
@@ -18,7 +18,7 @@ int main() {
     reverse.push_back(binary[i]);
   }
 
-  unsigned long ret = bitset<32>(reverse).to_ulong();
+  unsigned long ret = std::bitset<32>(reverse).to_ulong();
   std::cout << ret << std::endl;
 
   return 0;

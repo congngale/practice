@@ -5,7 +5,7 @@
 /*
  * code: 1920A
  * name: Satisfying Constraints
- * tags:
+ * tags: brute force, greedy, math
  * url: https://codeforces.com/problemset/problem/1920/A
  */
 
@@ -47,16 +47,14 @@ int main() {
       }
     }
 
-    std::int64_t result = 0;
-    if (min < max) {
-      result = (max - min) + 1;
-      for (const auto &number : block_number) {
-        if (number >= min && number <= max) {
-          result--;
-        }
+    std::int64_t sum = 0;
+    for (const auto &number : block_number) {
+      if (number >= min && number <= max) {
+        sum++;
       }
     }
-    std::cout << result << std::endl;
+
+    std::cout << std::max(max - min + 1 - sum, std::int64_t(0)) << "\n";
 
     t--;
   }
