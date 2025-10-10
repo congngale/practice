@@ -1,0 +1,2 @@
+# 2024
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/2024 2024)
